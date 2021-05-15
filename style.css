@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+    background-color: darkgray;
+    
+    
+}
+
+
+
+#leftside {
+    width: 30vw;
+    background-color: white;
+    display: block;
+    height: 100vh;
+
+}
+
+#mainInput {
+    margin-left: 5vw;
+    width: 20vw;
+    margin-top: 10vh;
+}
+
+#rightside {
+    position: absolute;
+    left: 30vw;
+    width: 70vw;
+    height: 100vh;
+    background-color: black;
+    top: 0vh;
+
+
+}
+
+.list {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    margin-top: 0.2vh;
+    /* margin-bottom: 5vh; */
+    margin-left: 6vw;
+    margin-right: 4vw; 
+    font-size: 3vh;
+}
+
+#totalCount {
+    font-size: 10vh;
+    margin-top: 20vh;
+    margin-left: 14vw;
+}
+
+#oplatit {
+    width: 10vw;
+    height: 10vh;
+    margin-left: 10vw;
+    margin-top: 3vh;
+}
+
+#addTovar {
+    width: 10vw;
+    height: 10vh;
+    margin-left: 10vw;
+    margin-top: 3vh;
+}
+
+#report {
+    width: 10vw;
+    height: 10vh;
+    margin-left: 10vw;
+    margin-top: 3vh;
+}
+
+#refresh {
+    width: 10vw;
+    height: 10vh;
+    margin-left: 10vw;
+    margin-top: 3vh;
+}
+
+.X {
+    position: absolute;
+    margin-left: 67vw;
+    margin-top: 1vh;
+    height: 2.75vh;
+}
+
+.Y {
+    position: absolute;
+    margin-top: 1vh;
+    height: 2.75vh;
+    width: 5vw;
+}
