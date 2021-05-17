@@ -13,7 +13,7 @@ var data = xlsx.utils.sheet_to_json(table);
 
 var currentsell = 0
 var currentbuy = 0
-
+ 
 function search(arr, x)  {
     let start=0, end=arr.length;
           
@@ -88,7 +88,7 @@ app.post("/pay", (req, res) => {
     for (let i of arr) {
         if(i == 0 || i == null) {
             continue
-        }
+        } 
 
         if (data[i])
         data[i].count--
@@ -169,6 +169,36 @@ app.get('/refresh', (req, res) => {
     data = xlsx.utils.sheet_to_json(table);
 
 }) 
+
+app.post('/addNewItem', (req, res) => {
+    console.log('adding new item...')
+
+    let tempObj = {
+        id: req.body.id,
+        Name: req.body.Name,
+        count: req.body.count, 
+        buy: req.body.buy,
+        sell: req.body.sell
+    }
+    data.push(tempObj)
+    console.log('sorting')
+    data.sort((a, b) => {
+        
+        if (a.id < b.id) {
+            return -1
+        } else {
+            return 1
+        }
+    })
+    console.log('sorting ended')
+
+    var newws = xlsx.utils.json_to_sheet(data)
+    var newwb = xlsx.utils.book_new()
+    xlsx.utils.book_append_sheet(newwb, newws, "Лист2")
+
+    xlsx.writeFile(newwb, "db.xlsx")
+
+})
 
 app.listen(PORT, () => {
     console.log("Listening on port " + PORT)
