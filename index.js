@@ -190,13 +190,13 @@ app.post('/addNewItem', (req, res) => {
     console.log('sorting')
     data.sort((a, b) => {
         
-        if (a.id < b.id) {
+        if (Number(a.id) < Number(b.id)) {
             return -1
         } else {
             return 1
         }
     })
-    console.log('sorting ended')
+    console.log(data)
 
     var newws = xlsx.utils.json_to_sheet(data)
     var newwb = xlsx.utils.book_new()
