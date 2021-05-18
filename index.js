@@ -168,6 +168,12 @@ app.get('/refresh', (req, res) => {
 
     data = xlsx.utils.sheet_to_json(table);
 
+    var newws = xlsx.utils.json_to_sheet(data)
+    var newwb = xlsx.utils.book_new()
+    xlsx.utils.book_append_sheet(newwb, newws, "Лист2")
+
+    xlsx.writeFile(newwb, "db.xlsx")
+
 }) 
 
 app.post('/addNewItem', (req, res) => {
