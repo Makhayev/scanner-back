@@ -180,13 +180,14 @@ app.post('/addNewItem', (req, res) => {
     console.log('adding new item...')
 
     let tempObj = {
-        id: req.body.id,
+        id: Number(req.body.id),
         Name: req.body.Name,
-        count: req.body.count, 
-        buy: req.body.buy,
-        sell: req.body.sell
+        count: Number(req.body.count), 
+        buy: Number(req.body.buy),
+        sell: Number(req.body.sell)
     }
     data.push(tempObj)
+    console.log(req.body.id)
     console.log('sorting')
     data.sort((a, b) => {
         
@@ -196,13 +197,15 @@ app.post('/addNewItem', (req, res) => {
             return 1
         }
     })
-    console.log(data)
+    // console.log(data)
 
     var newws = xlsx.utils.json_to_sheet(data)
     var newwb = xlsx.utils.book_new()
     xlsx.utils.book_append_sheet(newwb, newws, "Лист2")
 
     xlsx.writeFile(newwb, "db.xlsx")
+    res.send('success')
+    res.end()
 
 })
 
