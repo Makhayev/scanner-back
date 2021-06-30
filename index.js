@@ -209,6 +209,50 @@ app.post('/addNewItem', (req, res) => {
 
 })
 
+app.post('/searchByName', (req, res) => {
+    console.log('searchByName invoked')
+
+    let lookfor = String(req.body.search).toLowerCase()
+
+
+    console.log(lookfor)
+    let resp = []
+
+    for (let k = 0; k < data.length; k++) {
+        if (data[k].Name.toLowerCase().includes(lookfor)) {
+
+            let respo = {
+                Name: data[k].Name,
+                id: k,
+                count: data[k].count,
+                buy: data[k].buy,
+                sell: data[k].sell
+            }
+
+            resp.push(respo)
+
+        }
+    }
+
+
+
+    // for (let a of data) {
+    //     if (a.Name.toLowerCase().includes(lookfor)) {
+    //         resp.push(a)
+    //         let respo = {
+    //             Name:
+    //             id:
+    //             count: 
+    //             buy: 
+    //             sell:
+    //         }
+    //     }
+    // }
+
+    res.send(JSON.stringify(resp))
+    res.end()
+})
+
 app.listen(PORT, () => {
     console.log("Listening on port " + PORT)
 })
