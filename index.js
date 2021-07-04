@@ -253,6 +253,26 @@ app.post('/searchByName', (req, res) => {
     res.end()
 })
 
+app.post('/changeItem', (req, res) => {
+    console.log('changeItem invoked')
+    console.log(req.body)
+    let found = search(data, Number(req.body.id))
+    console.log(found)
+    data[found + 1].Name = req.body.Name
+    data[found + 1].count = req.body.count 
+    data[found + 1].sell = req.body.sell
+    data[found + 1].buy = req.body.buy
+    var newws = xlsx.utils.json_to_sheet(data)
+    var newwb = xlsx.utils.book_new()
+    xlsx.utils.book_append_sheet(newwb, newws, "Лист2")
+
+    xlsx.writeFile(newwb, "db.xlsx")
+
+    res.status(200)
+    res.send(true)
+    res.end()
+})
+
 app.listen(PORT, () => {
     console.log("Listening on port " + PORT)
 })
