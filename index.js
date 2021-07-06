@@ -223,7 +223,7 @@ app.post('/searchByName', (req, res) => {
 
             let respo = {
                 Name: data[k].Name,
-                id: k,
+                id: data[k].id,
                 count: data[k].count,
                 buy: data[k].buy,
                 sell: data[k].sell
